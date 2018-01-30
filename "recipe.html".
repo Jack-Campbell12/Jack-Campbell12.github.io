@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>[Lavender Lemonade]</title>
+</head>
+<body>
+<h1>Lavender Lemonade Recipe</h1>
+<p> Lavender has many benefits such as reducing anxiety, improves brain function and sleep, restores skin, and protects against diabetic symptoms. This refreshing drink is perfect for summer and along with the awesome benefits tastes great!</p>
+
+<img src="lavender-lemonade-3.jpg" alt="Lavender Lemonade" width="500" height="377">
+
+<h2>Ingredients</h2>
+<ul>
+<li>6 cups water, divided</li>
+<li>1/2 cup sugar</li>
+<li>1/4cup honey</li>
+<li>3 Tbsp dried lavender</li>
+<li>2 cups lemon juice</li>
+<li>Lemon slices and lavender peels (for decorations)</li>
+<li>Blue or purple food coloring for decoration</li>
+
+<h2>Instructions</h2>
+
+<ul style="list-style-type:square">
+<li>Over medium heat, combine two cups of water and sugar, bringing to a boil until sugar is dissolved. Turn off of the heat and stir in agave nectar and lavender.</li>
+<li>Allow mixture to steep for 2 hours (less if you want less of a lavender taste). Strain the liquid, pressing the lavender down to make sure you get all of those juices into your mixture!</li>
+<li>In a large pitcher, combine freshly squeezed lemon juice, lavender mixture and water.</li>
+<li>Feel free to add a couple drops of blue or purple food coloring if you want more color than the lavender provides. Makes the lemonade especially cute for those ladiesâ?? brunches! Serve over ice.</li>
+<li>Enjoy!</li>
+</ul>
+
+</html>
+</head>
+</body>
