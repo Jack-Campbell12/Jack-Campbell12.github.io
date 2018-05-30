@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<canvas id="gameCanvas" width=800 height="600"></canvas>
+
+<html>
+<head>
+    <title> Epic Ping Pong!</title>
+<head>
+<body>
+<p> Epic Ping Pong!</p>
+
+<script>
+//set up canvass
+var canvas;
+var canvasContext;
+//set up ball coordinates and speed control
+var ballx = 50;
+var bally = 50;
+var ballSpeedx = 10;
+var ballSpeedy = 4;
+
+var player1Score=0;
+var player2Score=0;
+
+var radius = 15;
+
+//set up scoring variables
+var player1Score = 0;
+var player2Score = 0;
+
+
+//set up paddle dimensions and position
+var paddle1y = 250;
+var paddle2y = 250;
+const PADDLE_THICKNESS = 10;
+const PADDLE_HEIGHT = 100;
+
+//calculate Mouse Position
+function calculateMousePos(evt){
+ var rect = canvas.getBoundingClientRect();
+ var root = document.documentElement;
+ var mouseX = evt.clientX - rect.left - root.scrollLeft;
+ var mouseY = evt.clientY - rect.left - root.scrollTop;
+ return{
+  x:mouseX,
+  y:mouseY
+ };
+}
+
+//computer moves the "computer"paddle
+function computerMovement(){
+ var paddle2YCenter =paddle2Y + (PADDLE_HEIGHT/2);
+ if(paddle2YCenter<ballY-35){
+ paddle2Y=paddle2Y + 6;
+ }else if(paddle2YCenter.ballY+35){
+ paddle2Y = paddle2Y - 6;
+  }
+  
+}
+
+window.onload = function() {
+       canvas=document.getElementById('gameCanvas');
+       canvasContext=canvas.getContext('2d');
+      
+ var framerate = 30;
+ setInterval(callEverything, 1000/framerate);
+       
+canvas.addEventListener('mousemove', function(evt){
+  var mousePos = calculateMousePos(evt);
+  	paddle1y = mousePos.y - (PADDLE_HEIGHT/2);
+   });
+      
+       console.log("I am working!");
+}//end window.onload
+      
+//reset ball if it hits the wall
+function ballReset() {
+ballSpeedx = -ballSpeedx;
+ballx = canvas.width/2;
+bally = canvas.height/2;
+   
+}//end ballReset
+
+//computer moves the "computer" paddle
+function computerMovement() {
+    var paddle2yCenter = paddle2y +(PADDLE_HEIGHT/2);
+    if(paddle2yCenter < bally - 35) {
+    paddle2y = paddle2y +6;
+    } else if(paddle2yCenter > bally + 35) {
+    paddle2y = paddle2y - 6;
+    }
+}
+   
+   
+function callEverything() {
+    moveEverything();
+    drawEverything();
+}
+
+function moveEverything() {
+computerMovement();
+
+if(ballx<0) {
+    if(bally > paddle1y &&
+     bally < paddle1y + PADDLE_HEIGHT) {
+     ballSpeedx = -ballSpeedx;
+    } else {
+     ballReset();
+     player2Score++;
+    }
+}
+if(ballx > canvas.width) {
+    if(bally > paddle2y &&
+    bally < paddle2y + PADDLE_HEIGHT){
+    ballSpeedx = -ballSpeedx;
+    } else {
+    ballReset();
+    player1Score++;
+    }
+}
+	if(bally < 0) {
+    	ballSpeedy=-ballSpeedy;
+    }
+    if(bally > canvas.height) {
+    	ballSpeedy = -ballSpeedy;
+    }
+   
+    ballx = ballx + ballSpeedx;
+    bally = bally + ballSpeedy;
+}
+   
+function drawEverything()
+{
+       
+      
+       // next line blanks out half the screen with black on right
+       canvasContext.fillStyle='pink';
+       canvasContext.fillRect(0,0,canvas.width,canvas.height);
+      
+      // next line blanks out half the screen with black on left
+       canvasContext.fillStyle='purple';
+       canvasContext.fillRect(0,0,canvas.width,canvas.height);
+       
+       //this is left player paddle
+       canvasContext.fillStyle ='white';
+       canvasContext.fillRect(0,paddle1y,PADDLE_THICKNESS,PADDLE_HEIGHT);
+      
+       //this is right computer paddle
+       canvasContext.fillStyle='white';
+       canvasContext.fillRect(canvas.width-PADDLE_THICKNESS, paddle2y,PADDLE_THICKNESS,PADDLE_HEIGHT);
+      
+       //canvasContext.fillStyle='yellow';
+       //canvasContext.fillRect(0,100,15,100);
+      
+       //next line draws the ball
+       canvasContext.fillStyle ='white';
+       canvasContext.beginPath();
+       canvasContext.arc(ballx, bally, radius,0,Math.PI*2,true);
+       canvasContext.fill();
+       
+       canvasContext.font = "bold 24px Arial";
+       canvasContext. fillText(player1Score, 15, 25);
+       canvasContext.fillText(player2Score, 780, 25);
+       console.log('end of draw');
+       
+    }
+
+</script>
+</body>
+</html>   
+   
+  
